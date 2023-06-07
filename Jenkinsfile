@@ -28,7 +28,7 @@ pipeline {
             steps {
                 echo 'deploy'
                 script {
-                     if (params.ENV == "dev" || params.ENV == "test" || params.ENV == "prod") {
+                     if (params.ENV == "release" || params.ENV == "dev" || params.ENV == "test" || params.ENV == "prod") {
                         withCredentials([file(credentialsId: 'mariam-kubeconfig', variable: 'KUBECONFIG_ITI')]) {
                             sh '''
                                 export BUILD_NUMBER=$(cat ../build.txt)
